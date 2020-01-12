@@ -8,7 +8,7 @@ const pool = new Pool({
 })
 
 const getCharacters = (request, response) => {
-  pool.query('SELECT * FROM characters ORDER BY id ASC', (error, results) => {
+  pool.query('SELECT name, id FROM characters ORDER BY id ASC', (error, results) => {
     if (error) {
 			console.log('broked');
       throw error
