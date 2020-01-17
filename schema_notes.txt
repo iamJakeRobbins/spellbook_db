@@ -1,0 +1,11 @@
+characters
+user_id not null INT
+id not null INT
+name varchar(20)
+level INT
+class varchar(20);
+
+CREATE TABLE class_code (
+id SERIAL PRIMARY KEY,
+description VARCHAR(20) NOT NULL
+);
