@@ -45,6 +45,7 @@ const insertChar = (req, res) => {
 
 module.exports = {
   getCharacters,
+	getClassDetails,
 	insertChar,
 
 }

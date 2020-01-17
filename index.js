@@ -20,6 +20,7 @@ app.get('/', (request, response) => {
 });
 
 app.get('/chars', db.getCharacters);
+app.get('/classDetails' , db.getClassDetails);
 
 app.post('/submitCharacter', db.insertChar);
 
