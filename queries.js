@@ -20,6 +20,14 @@ const getCharacters = (request, response) => {
   })
 };
 
+const getClassDetails = (req, res) => {
+	pool.query(
+		`SELECT * FROM class_code
+		ORDER BY description DESC`, res => {
+			res,status(200),json(results.rows)
+		})
+};
+
 const insertChar = (req, res) => {
 	let userId = 44808;
 	let data = req.body;
