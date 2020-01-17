@@ -23,8 +23,8 @@ const getCharacters = (request, response) => {
 const getClassDetails = (req, res) => {
 	pool.query(
 		`SELECT * FROM class_code
-		ORDER BY description DESC`, res => {
-			res,status(200),json(results.rows)
+		ORDER BY description DESC`, (error,results) => {
+			res.status(200).json(results.rows)
 		})
 };
 
@@ -36,7 +36,6 @@ const insertChar = (req, res) => {
 	(user_id, name, level, class)
 	VALUES ($1,$2,$3,$4)`, (error, results) => {
 		if(error) {
-			console.log('uhoh')
 			throw error
 		}
 		response.status(200);
