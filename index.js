@@ -15,12 +15,13 @@ app.use(
 )
 
 app.get('/', (request, response) => {
+	console.log('hello world')
   response.json({ info: 'Node.js, Express, and Postgres API' })
-})
+});
 
-app.get('/chars', db.getCharacters)
+app.get('/chars', db.getCharacters);
 
-app.post
+app.post('/submitCharacter', db.insertChar);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
