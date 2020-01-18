@@ -23,6 +23,7 @@ app.post('/getSingleCharacter', db.getSingleCharacter);
 app.get('/classDetails', db.getClassDetails);
 
 app.post('/submitCharacter', db.insertChar);
+app.post('/updateCharacter', db.updateCharacter);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
