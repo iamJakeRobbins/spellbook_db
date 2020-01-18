@@ -23,8 +23,6 @@ const getCharacters = (request, response) => {
 };
 
 const getSingleCharacter = (req, res) => {
-	// console.log('hello');
-	// console.log(req.body);
 	pool.query(
 		`SELECT c.*,
 		 description
@@ -40,7 +38,10 @@ const getClassDetails = (req, res) => {
 	pool.query(
 		`SELECT * FROM class_code
 		ORDER BY description DESC`, (error,results) => {
-			res.status(200).json(results.rows)
+			if (error) {
+				throw error;
+			}
+			res.status(200).json(results.rows);
 		})
 };
 
@@ -53,7 +54,7 @@ const insertChar = (req, res) => {
 	(user_id, name, level, class)
 	VALUES ($1,$2,$3,$4)`, [44808, data.name, data.level, data.class ], (error, results) => {
 		if(error) {
-			throw error
+			throw error;
 		}
 		res.status(200).json(`Success! ${data.name} has been created`);
 	})
