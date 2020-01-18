@@ -24,6 +24,7 @@ app.get('/classDetails', db.getClassDetails);
 
 app.post('/submitCharacter', db.insertChar);
 app.post('/updateCharacter', db.updateCharacter);
+app.post('/deleteCharacter', db.deleteCharacter);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)

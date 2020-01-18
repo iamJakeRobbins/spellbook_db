@@ -88,6 +88,22 @@ const updateCharacter = (req, res) => {
 		})
 };
 
+const deleteCharacter = (req, res) => {
+	let id = req.body.id;
+	pool.query(
+	`DELETE
+	 FROM characters
+	 WHERE id = $1`, [
+		 id
+	 ], (err, results) => {
+		 if (err) {
+			 throw err;
+		 }
+		 res.status(200).json('Character deleted');
+	 }
+	)
+}
+
 
 module.exports = {
   getCharacters,
@@ -95,5 +111,6 @@ module.exports = {
 	getClassDetails,
 	insertChar,
 	updateCharacter,
+	deleteCharacter,
 
 }
