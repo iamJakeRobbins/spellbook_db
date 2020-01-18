@@ -10,8 +10,10 @@ const pool = new Pool({
 const getCharacters = (request, response) => {
   pool.query(
 		`SELECT name,
-		id
-		FROM characters
+		c.id,
+		description
+		FROM characters c
+		JOIN class_code cc ON cc.id = c.class
 		ORDER BY id ASC`, (error, results) => {
     if (error) {
       throw error
