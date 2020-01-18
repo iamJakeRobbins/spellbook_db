@@ -22,6 +22,18 @@ const getCharacters = (request, response) => {
   })
 };
 
+const getSingleCharacter = (req, res) => {
+	// console.log('hello');
+	// console.log(req.body);
+	pool.query(
+		`SELECT *
+		 FROM characters
+		 WHERE id = $1`, [req.body.id], (err, results) => {
+			 res.status(200).json(results.rows);
+		 }
+	)
+};
+
 const getClassDetails = (req, res) => {
 	pool.query(
 		`SELECT * FROM class_code
@@ -47,6 +59,7 @@ const insertChar = (req, res) => {
 
 module.exports = {
   getCharacters,
+	getSingleCharacter,
 	getClassDetails,
 	insertChar,
 

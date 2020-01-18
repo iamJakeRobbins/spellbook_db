@@ -15,12 +15,12 @@ app.use(
 )
 
 app.get('/', (request, response) => {
-	console.log('hello world')
   response.json({ info: 'Node.js, Express, and Postgres API' })
 });
 
 app.get('/chars', db.getCharacters);
-app.get('/classDetails' , db.getClassDetails);
+app.post('/getSingleCharacter', db.getSingleCharacter);
+app.get('/classDetails', db.getClassDetails);
 
 app.post('/submitCharacter', db.insertChar);
 
