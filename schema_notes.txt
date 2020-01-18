@@ -3,7 +3,7 @@ user_id not null INT
 id not null INT
 name varchar(20)
 level INT
-class varchar(20);
+class INT;
 
 CREATE TABLE class_code (
 id SERIAL PRIMARY KEY,
