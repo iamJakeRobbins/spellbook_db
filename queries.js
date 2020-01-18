@@ -72,7 +72,7 @@ const updateCharacter = (req, res) => {
 		`UPDATE characters SET
 		 name = $3,
 		 level = $4,
-		 class = $5,
+		 class = $5
 		 WHERE user_id = $1
 		 AND id = $2`, [
 			userId,
@@ -94,5 +94,6 @@ module.exports = {
 	getSingleCharacter,
 	getClassDetails,
 	insertChar,
+	updateCharacter,
 
 }
