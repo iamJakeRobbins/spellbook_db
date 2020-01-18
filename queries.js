@@ -35,13 +35,11 @@ const insertChar = (req, res) => {
 	let data = req.body;
 
 	pool.query(
-	`INSERT INTO characters
-	(user_id, name, level, class)
-	VALUES ($1,$2,$3,$4)`, [44808, ], (error, results) => {
+	'INSERT INTO characters (user_id, name, level, class) VALUES ($1,$2,$3,$4)', [44808, data.name, data.level, data.class ], (error, results) => {
 		if(error) {
 			throw error
 		}
-		response.status(200);
+		res.status(200).json(`Success! ${data.name} has been created`);
 	})
 }
 
