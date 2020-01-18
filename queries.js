@@ -26,9 +26,11 @@ const getSingleCharacter = (req, res) => {
 	// console.log('hello');
 	// console.log(req.body);
 	pool.query(
-		`SELECT *
-		 FROM characters
-		 WHERE id = $1`, [req.body.id], (err, results) => {
+		`SELECT c.*,
+		 description
+		 FROM characters c
+		 JOIN class_code cc ON c.class = cc.id
+		 WHERE c.id = $1`, [req.body.id], (err, results) => {
 			 res.status(200).json(results.rows);
 		 }
 	)
