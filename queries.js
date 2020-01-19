@@ -9,13 +9,14 @@ const pool = new Pool({
 const userId = 44808;
 const getCharacters = (request, response) => {
   pool.query(
-		`SELECT c.name,
-		c.id,
-		c.level,
-		description
-		FROM characters c
-		JOIN class_code cc ON cc.id = c.class
-		ORDER BY id ASC`, (error, results) => {
+		`SELECT
+		 c.name,
+		 c.id,
+		 c.level,
+		 description
+		 FROM characters c
+		 JOIN class_code cc ON cc.id = c.class
+		 ORDER BY id ASC`, (error, results) => {
     if (error) {
       throw error
     }
@@ -25,7 +26,8 @@ const getCharacters = (request, response) => {
 
 const getSingleCharacter = (req, res) => {
 	pool.query(
-		`SELECT c.*,
+		`SELECT
+		 c.*,
 		 description
 		 FROM characters c
 		 JOIN class_code cc ON c.class = cc.id
@@ -39,8 +41,9 @@ const getSingleCharacter = (req, res) => {
 
 const getClassDetails = (req, res) => {
 	pool.query(
-		`SELECT * FROM class_code
-		ORDER BY description DESC`, (error,results) => {
+		`SELECT *
+		 FROM class_code
+		 ORDER BY description ASC`, (error,results) => {
 			if (error) {
 				throw error;
 			}
@@ -50,11 +53,10 @@ const getClassDetails = (req, res) => {
 
 const insertChar = (req, res) => {
 	let data = req.body;
-
 	pool.query(
 	`INSERT INTO characters
-	(user_id, name, level, class)
-	VALUES ($1,$2,$3,$4)`, [
+	 (user_id, name, level, class)
+	 VALUES ($1,$2,$3,$4)`, [
 		44808,
 		data.name,
 		data.level,
@@ -113,5 +115,4 @@ module.exports = {
 	insertChar,
 	updateCharacter,
 	deleteCharacter,
-
 }

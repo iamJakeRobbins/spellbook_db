@@ -1,7 +1,7 @@
 CREATE TABLE characters (
 user_id INT NOT NULL,
 id SERIAL NOT NULL,
-name varchar(20),
+name VARCHAR(20),
 level INT,
 class INT,
 PRIMARY KEY(user_id, id),
