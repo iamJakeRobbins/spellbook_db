@@ -1,17 +1,20 @@
-characters
-user_id not null INT
-id not null INT
-name varchar(20)
-level INT
-class INT;
+CREATE TABLE characters (
+user_id INT NOT NULL,
+id SERIAL NOT NULL,
+name varchar(20),
+level INT,
+class INT,
+PRIMARY KEY(user_id, id),
+UNIQUE(id)
+);
 
 CREATE TABLE class_code (
 id SERIAL PRIMARY KEY,
 description VARCHAR(20) NOT NULL
 );
 
-create table spell_slots(
+CREATE TABLE spell_slots(
 user_id INTEGER NOT NULL,
-id INTEGER NOT NULL,
+id INTEGER NOT NULL references characters (id),
 first INTEGER NOT NULL,
 PRIMARY KEY(user_id, id));
