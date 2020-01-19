@@ -9,8 +9,9 @@ const pool = new Pool({
 const userId = 44808;
 const getCharacters = (request, response) => {
   pool.query(
-		`SELECT name,
+		`SELECT c.name,
 		c.id,
+		c.level,
 		description
 		FROM characters c
 		JOIN class_code cc ON cc.id = c.class
