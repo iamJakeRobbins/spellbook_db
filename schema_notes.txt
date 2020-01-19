@@ -9,3 +9,9 @@ CREATE TABLE class_code (
 id SERIAL PRIMARY KEY,
 description VARCHAR(20) NOT NULL
 );
+
+create table spell_slots(
+user_id INTEGER NOT NULL,
+id INTEGER NOT NULL,
+first INTEGER NOT NULL,
+PRIMARY KEY(user_id, id));
