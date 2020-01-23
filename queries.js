@@ -1,12 +1,14 @@
-const Pool = require('pg').Pool
+const Pool = require('pg').Pool;
 const pool = new Pool({
   user: 'me',
   host: 'localhost',
   database: 'myspellbook_api',
   password: 'password',
   port: 5432,
-})
+});
+
 const userId = 44808;
+
 const getCharacters = (request, response) => {
   pool.query(
 		`SELECT
@@ -94,9 +96,9 @@ const updateCharacter = (req, res) => {
 const deleteCharacter = (req, res) => {
 	let id = req.body.id;
 	pool.query(
-	`DELETE
-	 FROM characters
-	 WHERE id = $1`, [
+`DELETE
+						 FROM characters
+						 WHERE id = $1`, [
 		 id
 	 ], (err, results) => {
 		 if (err) {
@@ -105,7 +107,24 @@ const deleteCharacter = (req, res) => {
 		 res.status(200).json('Character deleted');
 	 }
 	)
+};
+
+// TODO this will have to expand as we add additional available spell levels
+const getCharacterSpellSlots = (req, res) => {
+	const id = req.body.id;
+	pool.query(
+`SELECT first
+							FROM spell_slots
+							WHERE id = $1`, [
+							id,
+			], (err, results) => {
+	if(err) {
+		throw err;
+	}
+	res.status(200).json(results.rows);
 }
+	)
+};
 
 
 module.exports = {
@@ -115,4 +134,5 @@ module.exports = {
 	insertChar,
 	updateCharacter,
 	deleteCharacter,
-}
+	getCharacterSpellSlots,
+};
