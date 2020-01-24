@@ -30,9 +30,11 @@ const getSingleCharacter = (req, res) => {
 	pool.query(
 		`SELECT
 		 c.*,
+		 ss.first,
 		 description
 		 FROM characters c
 		 JOIN class_code cc ON c.class = cc.id
+		 JOIN spell_slots ss ON c.id = ss.id
 		 WHERE c.id = $1`, [
 			 req.body.id
 		 ], (err, results) => {
