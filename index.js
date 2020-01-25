@@ -13,14 +13,14 @@ app.use(
   })
 );
 
-app.get('/chars', db.getCharacters);
-app.get('/classDetails', db.getClassDetails);
+app.get('/api/chars', db.getCharacters);
+app.get('/api/classDetails', db.getClassDetails);
 
-app.post('/getSingleCharacter', db.getSingleCharacter);
-app.post('/submitCharacter', db.insertChar);
-app.post('/updateCharacter', db.updateCharacter);
-app.post('/deleteCharacter', db.deleteCharacter);
-app.post('/charSpellSlots', db.getCharacterSpellSlots);
+app.post('/api/getSingleCharacter', db.getSingleCharacter);
+app.post('/api/submitCharacter', db.insertChar);
+app.post('/api/updateCharacter', db.updateCharacter);
+app.post('/api/deleteCharacter', db.deleteCharacter);
+app.post('/api/charSpellSlots', db.getCharacterSpellSlots);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
