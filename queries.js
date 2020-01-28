@@ -115,7 +115,8 @@ const deleteCharacter = (req, res) => {
 const getCharacterSpellSlots = (req, res) => {
 	const id = req.body.id;
 	pool.query(
-`SELECT first
+`SELECT first,
+							second
 							FROM spell_slots
 							WHERE id = $1`, [
 							id,
