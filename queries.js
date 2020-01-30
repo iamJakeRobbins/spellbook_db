@@ -15,7 +15,8 @@ const getCharacters = (request, response) => {
 		 c.name,
 		 c.id,
 		 c.level,
-		 description
+		 description,
+		 cc.id AS classId
 		 FROM characters c
 		 JOIN class_code cc ON cc.id = c.class
 		 ORDER BY id ASC`, (error, results) => {
