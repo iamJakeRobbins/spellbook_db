@@ -32,6 +32,7 @@ const getSingleCharacter = (req, res) => {
 		`SELECT
 		 c.*,
 		 ss.first,
+		 ss.second
 		 description
 		 FROM characters c
 		 JOIN class_code cc ON c.class = cc.id
