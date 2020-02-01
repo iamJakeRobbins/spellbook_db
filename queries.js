@@ -21,7 +21,7 @@ const getCharacters = (request, response) => {
 		 ss.second
 		 FROM characters c
 		 JOIN class_code cc ON c.class = cc.id
-		 JOIN spell_slots ss ON c.id = ss.id
+		 LEFT JOIN spell_slots ss ON c.id = ss.id
 		 ORDER BY id ASC`, (error, results) => {
     if (error) {
       throw error
