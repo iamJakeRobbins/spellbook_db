@@ -26,6 +26,7 @@ const getCharacters = (request, response) => {
     if (error) {
       throw error
     }
+    data = convertSpellSlotsToObject(results.rows);
     response.status(200).json(results.rows)
   })
 };
@@ -133,6 +134,18 @@ const getCharacterSpellSlots = (req, res) => {
 }
 	)
 };
+
+function convertSpellSlotsToObject(data) {
+  data.forEach((e, i) => {
+    e.spellSlots = {
+      first: e['first'],
+      second: e['second'],
+    };
+    delete e['first'];
+    delete e['second'];
+  });
+  return data;
+}
 
 
 module.exports = {
