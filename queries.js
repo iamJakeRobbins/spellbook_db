@@ -16,9 +16,12 @@ const getCharacters = (request, response) => {
 		 c.id,
 		 c.level,
 		 description,
-		 cc.id AS classId
+		 cc.id AS classId,
+		 ss.first,
+		 ss.second
 		 FROM characters c
-		 JOIN class_code cc ON cc.id = c.class
+		 JOIN class_code cc ON c.class = cc.id
+		 JOIN spell_slots ss ON c.id = ss.id
 		 ORDER BY id ASC`, (error, results) => {
     if (error) {
       throw error
