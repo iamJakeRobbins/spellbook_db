@@ -70,7 +70,7 @@ const insertChar = (req, res) => {
 		44808,
 		data.name,
 		data.level,
-		data.class
+		data.classId
 	], (error, results) => {
 		if(error) {
 			throw error;
@@ -92,7 +92,7 @@ const updateCharacter = (req, res) => {
 			data.id,
 			data.name,
 			data.level,
-			data.class
+			data.classId
 		], (err, results) => {
 			if (err) {
 				throw err;
